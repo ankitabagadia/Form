@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+
+<body>
+    <form id="form">
+        <input type="text" id="name"><br><br>
+        <input type="number" id="number"><br><br>
+        <input type="email" id="email"><br><br>
+        <input type="number" id="age"><br><br>
+        <input type="submit">
+    </form>
+    <div id="result"></div>
+
+    <table border="2px" cellspacing="10px" cellpadding="10px">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Number</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th id="del">Delete</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+    </table>
+</body>
+
+<script>
+    document.getElementById("form").addEventListener("submit", function (e) {
+        e.preventDefault()
+        let name = document.getElementById("name").value
+        let number = document.getElementById("number").value
+        let email = document.getElementById("email").value
+        let age = document.getElementById("age").value
+
+        console.log(name, number, email, age);
+
+
+        let user = {
+            name: name,
+            number: number,
+            email: email,
+            age: age,
+        }
+
+        console.log(user);
+
+        let tr = document.createElement("tr")
+
+        let h1 = document.createElement("td");
+        h1.innerHTML = user.name;
+
+        let h2 = document.createElement("td");
+        h2.innerHTML = user.number;
+
+        let h3 = document.createElement("td");
+        h3.innerHTML = user.email;
+
+        let h4 = document.createElement("td");
+        h4.innerHTML = user.age;
+
+        let h5 = document.createElement("td");
+        h5.innerHTML = "Delete";
+        h5.addEventListener("click", function (e) {
+            e.target.parentNode.remove();
+        })
+        tr.append(h1, h2, h3, h4, h5)
+        document.getElementById("tbody").append(tr);
+
+        // let tr = document.createElement("tr")
+
+        // let h1 = document.createElement("td");
+        // h1.innerHTML = `Name: ${user.name}`;
+
+        // let h2 = document.createElement("td");
+        // h2.innerHTML = `Number: ${user.number}`;
+
+        // let h3 = document.createElement("td");
+        // h3.innerHTML = `Email: ${user.email}`;
+
+        // let h4 = document.createElement("td");
+        // h4.innerHTML = `Age: ${user.age}`;
+
+        // let h5 = document.createElement("td");
+        // h5.innerHTML = "Delete";
+        // h5.addEventListener("click",function(e){
+        //     e.target.parentNode.remove();
+
+        // tr.append(h1,h2,h3,h4,h5)
+        // document.getElementById("tbody").append(tr);
+
+        // document.getElementById("del").addEventListener("click",function(){
+        //     document.getElementById("tbody").innerHTML=""
+        // });
+
+        // document.getElementById("form").addEventListener("submit",data);
+        // })
+
+        // let h6 = document.createElement("h1")
+        // h6.innerHTML = name
+
+        // document.getElementById("result").append(h1)
+
+
+        // document.getElementById("result").innerHTML=`<h1> name: ${user.name}</h1> <h1> number: ${user.number}</h1> <h1> email: ${user.email}</h1> <h1> age: ${user.age}</h1>`
+    })
+</script>
+
+</html>
